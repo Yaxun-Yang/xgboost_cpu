@@ -68,11 +68,12 @@ def read_data():
 
 def train():
     dtrain, dtest= read_data()
-    # learning_rate, min_split_split_loss, , reg_lambda, reg_alpha
-    param = {"eta": 0.1, "gamma": 0, "max_depth": 6, "lambda": 1, "alpha": 0, "objective": "reg:gamma"}
-    num_round = 200
-    model = xgb.train(param, dtrain, num_round)
-    model.save_model('data/xgb.model')
+    # # learning_rate, min_split_split_loss, , reg_lambda, reg_alpha
+    # param = {"eta": 0.1, "gamma": 0, "max_depth": 6, "lambda": 1, "alpha": 0, "objective": "reg:gamma"}
+    # num_round = 200
+    # model = xgb.train(param, dtrain, num_round)
+    # model.save_model('data/xgb.model')
+    model = xgb.Booster(model_file='data/xgb.model')
     pred = model.predict(dtest)
     print(pred)
     plt.rcParams['font.sans-serif'] = ['KaiTi']
